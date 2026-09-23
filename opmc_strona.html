@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OPMC | Serwer Minecraft</title>
+  <meta name="description" content="OPMC — serwer Minecraft. Dołącz do nas i baw się razem z nami!">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Arial,Helvetica,sans-serif;
+      color:#eef6ff;
+      background:#06101f;
+      overflow-x:hidden;
+    }
+    body:before{
+      content:"";position:fixed;inset:0;z-index:-2;
+      background:
+        radial-gradient(circle at 20% 10%,rgba(0,132,255,.28),transparent 35%),
+        radial-gradient(circle at 80% 30%,rgba(0,89,255,.20),transparent 35%),
+        linear-gradient(135deg,#06101f,#0a1830 55%,#06101f);
+    }
+    body:after{
+      content:"";position:fixed;inset:0;z-index:-1;opacity:.12;
+      background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),
+                       linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);
+      background-size:40px 40px;
+    }
+    nav{
+      position:sticky;top:0;z-index:10;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:16px 7%;
+      background:rgba(4,12,25,.82);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(0,153,255,.2);
+    }
+    .logo{font-size:25px;font-weight:900;letter-spacing:2px;color:#45b8ff}
+    nav a{color:#dcecff;text-decoration:none;margin-left:20px;font-weight:700}
+    nav a:hover{color:#45b8ff}
+    .hero{
+      min-height:78vh;display:flex;align-items:center;justify-content:center;
+      text-align:center;padding:70px 20px;
+    }
+    .hero-box{max-width:850px}
+    .badge{
+      display:inline-block;padding:8px 14px;border:1px solid rgba(69,184,255,.4);
+      border-radius:999px;background:rgba(0,132,255,.1);color:#7dccff;font-weight:700;
+      margin-bottom:18px;
+    }
+    h1{font-size:clamp(60px,14vw,130px);line-height:.9;letter-spacing:6px;text-shadow:0 0 35px rgba(0,153,255,.45)}
+    .subtitle{font-size:clamp(18px,3vw,25px);color:#b9d8f3;margin:24px 0 30px}
+    .buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    .btn{
+      display:inline-block;text-decoration:none;padding:14px 23px;border-radius:12px;
+      font-weight:900;transition:.2s;border:1px solid rgba(255,255,255,.12)
+    }
+    .primary{background:#087de5;color:white;box-shadow:0 8px 30px rgba(0,125,229,.25)}
+    .secondary{background:rgba(255,255,255,.07);color:white}
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
+    section{padding:70px 7%;max-width:1150px;margin:auto}
+    .section-title{text-align:center;font-size:34px;margin-bottom:35px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+    .card{
+      padding:26px;border-radius:18px;background:rgba(10,28,52,.72);
+      border:1px solid rgba(69,184,255,.16);box-shadow:0 12px 35px rgba(0,0,0,.2)
+    }
+    .card h3{font-size:22px;margin-bottom:12px;color:#63c4ff}
+    .card p{color:#b8cce0;line-height:1.6}
+    .server{
+      text-align:center;padding:28px;border-radius:20px;
+      background:linear-gradient(135deg,rgba(0,125,229,.17),rgba(0,50,120,.18));
+      border:1px solid rgba(69,184,255,.25)
+    }
+    .ip{font-size:clamp(20px,4vw,32px);font-weight:900;margin:12px 0 20px;color:#fff;word-break:break-all}
+    .copy{cursor:pointer}
+    .price{font-size:32px;font-weight:900;margin:16px 0;color:#fff}
+    ul{list-style:none;line-height:2;color:#c4d8ea}
+    footer{text-align:center;padding:35px 20px;color:#7893aa;border-top:1px solid rgba(255,255,255,.08)}
+    @media(max-width:650px){nav{padding:14px 5%}nav .links{display:none}section{padding:55px 5%}.hero{min-height:72vh}}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">⚔ OPMC</div>
+    <div class="links">
+      <a href="#serwer">Serwer</a>
+      <a href="#sklep">Sklep</a>
+      <a href="#regulamin">Regulamin</a>
+      <a href="#discord">Discord</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="hero-box">
+        <div class="badge">⛏️ SERWER MINECRAFT</div>
+        <h1>OPMC</h1>
+        <p class="subtitle">Wbij na serwer, poznaj ekipę i zacznij swoją przygodę!</p>
+        <div class="buttons">
+          <a class="btn primary" href="#serwer">🎮 DOŁĄCZ DO SERWERA</a>
+          <a class="btn secondary" href="https://discord.gg/MWew9UAw8" target="_blank">💬 DISCORD</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="serwer">
+      <h2 class="section-title">🎮 Serwer</h2>
+      <div class="server">
+        <div>Adres serwera</div>
+        <div class="ip" id="serverIp">opmc.aternos.me</div>
+        <button class="btn primary copy" onclick="copyIP()">📋 KOPIUJ IP</button>
+        <p id="copied" style="margin-top:14px;color:#7dccff"></p>
+      </div>
+    </section>
+
+    <section id="sklep">
+      <h2 class="section-title">🛒 Sklep</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>⭐ VIP</h3>
+          <div class="price">10 zł</div>
+          <ul><li>✔ Ranga VIP</li><li>✔ Dodatkowe możliwości</li><li>✔ Specjalny prefix</li></ul>
+        </div>
+        <div class="card">
+          <h3>💎 SVIP</h3>
+          <div class="price">20 zł</div>
+          <ul><li>✔ Ranga SVIP</li><li>✔ Więcej możliwości</li><li>✔ Specjalny prefix</li></ul>
+        </div>
+        <div class="card">
+          <h3>👑 MVP</h3>
+          <div class="price">30 zł</div>
+          <ul><li>✔ Ranga MVP</li><li>✔ Najwięcej możliwości</li><li>✔ Specjalny prefix</li></ul>
+        </div>
+      </div>
+      <p style="text-align:center;color:#7893aa;margin-top:22px">
+        Ceny i zawartość rang możesz później zmienić.
+      </p>
+    </section>
+
+    <section id="regulamin">
+      <h2 class="section-title">📜 Regulamin</h2>
+      <div class="card">
+        <p>1. Szanuj innych graczy i administrację.</p><br>
+        <p>2. Zakazane jest używanie cheatów i niedozwolonych wspomagaczy.</p><br>
+        <p>3. Nie spamuj i nie reklamuj innych serwerów bez zgody administracji.</p><br>
+        <p>4. Stosuj się do poleceń administracji.</p><br>
+        <p>5. Administracja może aktualizować regulamin.</p>
+      </div>
+    </section>
+
+    <section id="discord">
+      <h2 class="section-title">💬 Discord</h2>
+      <div class="server">
+        <p class="subtitle">Dołącz do naszej społeczności!</p>
+        <a class="btn primary" href="https://discord.gg/MWew9UAw8" target="_blank">🚀 DOŁĄCZ NA DISCORDA</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 OPMC • Serwer Minecraft</footer>
+
+  <script>
+    function copyIP(){
+      navigator.clipboard.writeText("opmc.aternos.me").then(()=>{
+        document.getElementById("copied").textContent="✅ IP skopiowane!";
+        setTimeout(()=>document.getElementById("copied").textContent="",2500);
+      });
+    }
+  </script>
+</body>
+</html>
